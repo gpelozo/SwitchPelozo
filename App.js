@@ -21,7 +21,17 @@ export default function App() {
     setUserNumber(selectedNumber)
   }
 
-  const handleFinishGame = (selection, number)
+  const handleFinishGame = (selection, number) => {
+    if (
+      (selection === "lower" && userNumber < number) ||
+      (selection === "higher" && userNumber > number)
+    ) {
+      setResult("Win")
+    } else {
+      setResult("Lose")
+    }
+    setWinOrLose(true)
+  }
   let content = <StartGameScreen onStartGame={handleStartGame}/>
 
   if (userNumber) {
