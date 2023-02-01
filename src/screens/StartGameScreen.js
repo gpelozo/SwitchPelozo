@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, ScrollView, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import Card from '../components/Card'
-import colors from '../constants/colors'
-import Input from '../components/Input'
+import colors from "../constants/colors"
+import Input from "../components/Input"
+
+const width = Dimensions.get("window").width
+const height = Dimensions.get("window").height 
 
 const StartGameScreen = () => {
     const [value, setValue] = useState("")
@@ -31,8 +34,8 @@ const StartGameScreen = () => {
 
 
   return (
-    <KeyboardAvoidingView style={{flex:1}} behavior={os === "ios ? "padding" : "height"}>
-    <ScrollView style={{ backgroundColor: colors.primary}}>
+    <KeyboardAvoidingView style={{flex:1}} behavior={"ios" === "ios" ? "padding" : "height"}>
+    <ScrollView styles={{ backgroundColor: colors.primary}}>
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
     <View style={styles.container}>
       <Text style={styles.title}>Start Game</Text>
@@ -59,6 +62,7 @@ const StartGameScreen = () => {
       )}
     </View>
     </TouchableWithoutFeedback>
+    </ScrollView>
     </KeyboardAvoidingView>
   )
 }
@@ -75,13 +79,14 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         marginVertical: 10,
+        color: "white", 
     },
     subtitle: {
         color: "white",
     },
     buttonContainer: {
         flexDirection: "row",
-        width: "100%",
+        width: width < 400 ? "100%" : 500,
         justifyContent: "space-between",
         paddingHorizontal: 15,
         marginTop: 20,

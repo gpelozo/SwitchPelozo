@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
@@ -32,10 +32,13 @@ export default function App() {
     }
     setWinOrLose(true)
   }
+  
   let content = <StartGameScreen onStartGame={handleStartGame}/>
 
-  if (userNumber) {
-    content = <GameScreen />
+  if (userNumber && winOrLose === true) {
+    content = <ResultScreen/>
+  } else {
+    content = <GameScreen handleResult={handleFinishGame}/>
   }
 
   if (!loaded) {
@@ -46,11 +49,11 @@ export default function App() {
     <SafeAreaView style={styles.container}>
     <View >
       <StatusBar style="auto" />
-      <Header title={"Guess the Number"} newStyles={{fontFamily: "DancingScriptRegular"}} />
+      <Header title={"Guess the Number"} newStyles={{ fontFamily: "DancingScriptRegular" }} />
       {content}
     </View>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native'
 import React, { useState, useEffect} from 'react'
 import Card from "../components/Card"
-import win from ../assets/images/win.jpg
-import lose from ..assets/images/gameOver.png
-import colors from '../constants/colors'
+import win from "../assets/images/win.png"
+import lose from "../assets/images/gameOver.jpeg"
+import colors from "../constants/colors"
 
 const ResultScreen = ({ result }) => {
     const [image, setImage] = useState("")
