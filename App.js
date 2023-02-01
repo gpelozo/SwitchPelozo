@@ -36,8 +36,8 @@ export default function App() {
   let content = <StartGameScreen onStartGame={handleStartGame}/>
 
   if (userNumber && winOrLose === true) {
-    content = <ResultScreen/>
-  } else {
+    content = <ResultScreen result={result}/>
+  } else if (userNumber) {
     content = <GameScreen handleResult={handleFinishGame}/>
   }
 
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
     <View >
-      <StatusBar style="auto" />
+      <StatusBar style= "auto" />
       <Header title={"Guess the Number"} newStyles={{ fontFamily: "DancingScriptRegular" }} />
       {content}
     </View>

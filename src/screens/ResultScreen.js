@@ -21,7 +21,7 @@ const ResultScreen = ({ result }) => {
     <SafeAreaView style={styles.container}>
     <View>
       <Card>
-        <Text>{`you ${result}`}</Text>
+        <Text>{`You ${result}`}</Text>
       </Card>
       <Image style={styles.imageContainer} source={image}/>
     </View>

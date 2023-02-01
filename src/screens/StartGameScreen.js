@@ -1,16 +1,21 @@
-import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, ScrollView, Dimensions } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, View, Button, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, ScrollView, Dimensions, Platform } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import colors from "../constants/colors"
 import Input from "../components/Input"
 
 const width = Dimensions.get("window").width
 const height = Dimensions.get("window").height 
+const os = Platform.OS
 
-const StartGameScreen = () => {
+const StartGameScreen = ({onStartGame}) => {
     const [value, setValue] = useState("")
     const [confirmed, setConfirmed] = useState(false)
     const [selectedNumber, setSelectedNumber] = useState("")
+
+    useEffect( () => {
+        console.log (width, height, ios)
+    }, [] )
 
     const handleConfirmation = () => {
         const newValue = parseInt(value)
